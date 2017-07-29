@@ -3,23 +3,23 @@
 
 
 
-## Нужно отключить SMS-подтверждение https://www.walletone.com/wallet/client/#/settings/security
+# Нужно отключить SMS-подтверждение https://www.walletone.com/wallet/client/#/settings/security
 
-## Пример оплаты:
+# Пример оплаты:
 
-### Поставщики услуг:
+## Поставщики услуг:
  
- #### Список игр:
+ ### Список игр:
 
  * Steam === `steam`
  * War Thunder === `wthu`
- * World of Tanks/World of Warplanes => `wot`
+ * World of Tanks/World of Warplanes === `wot`
  * World of Warships === `wow`
  * Танки Онлайн === `tankionline`
  * Warface === `wafe`
  * GameMiner === `gmmn`
 
- #### Другое:
+ ### Другое:
 
  Вконтакте === `vkru`
  
@@ -64,7 +64,7 @@ const processComplete = (err, data) => {
 ```
 
 
-## Пример получения профиля
+# Пример получения профиля
 
  ```javascript
 import walletone from 'walletone'
@@ -86,7 +86,7 @@ api.accountInfo((err, data) => {
 
 ```
 
-## Пример получения баланса
+# Пример получения баланса
 
  ```javascript
 import walletone from 'walletone'
@@ -109,7 +109,7 @@ api.balanceInfo((err, data) => {
 ```
 
 
-## Пример получения лимитов
+# Пример получения лимитов
 
  ```javascript
 import walletone from 'walletone'
@@ -132,7 +132,7 @@ api.limitsInfo((err, data) => {
 ```
 
 
-## Пример получения уведомлений
+# Пример получения уведомлений
 
 По умолча́нию : `{ pageNumber: 1, itemsPerPage: 10 }`
 
