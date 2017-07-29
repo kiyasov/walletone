@@ -64,9 +64,9 @@ var Wallet = function () {
                         "Params": [{ "FieldId": "v1", "Value": user }, { "FieldId": "Amount", "Value": sum }]
                     }
                 };
-            } else if (type === 'warface') {
+            } else if (type === 'wafe' || type === 'wthu') {
                 return {
-                    providerId: 'wafe',
+                    providerId: type,
                     data: {
                         "FormId": "Index",
                         "Params": [{ "FieldId": "account", "Value": user }, { "FieldId": "Amount", "Value": sum }]
@@ -78,6 +78,14 @@ var Wallet = function () {
                     data: {
                         "FormId": "Index",
                         "Params": [{ "FieldId": "v1", "Value": user }, { "FieldId": "Amount", "Value": sum }]
+                    }
+                };
+            } else if (type === 'vkru' || type === 'gmmn') {
+                return {
+                    providerId: type,
+                    data: {
+                        "FormId": "Index",
+                        "Params": [{ "FieldId": "id", "Value": user }, { "FieldId": "Amount", "Value": sum }]
                     }
                 };
             }
