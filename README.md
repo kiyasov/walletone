@@ -33,7 +33,7 @@
 
 
  ```javascript
-import walletone from 'walletone'
+import walletone from 'walletone.com@'
 
 const api = new walletone({
     login: '',
@@ -67,7 +67,7 @@ const processComplete = (err, data) => {
 # Пример получения профиля
 
  ```javascript
-import walletone from 'walletone'
+import walletone from 'walletone.com@'
 
 const api = new walletone({
     login: '',
@@ -89,7 +89,7 @@ api.accountInfo((err, data) => {
 # Пример получения баланса
 
  ```javascript
-import walletone from 'walletone'
+import walletone from 'walletone.com@'
 
 const api = new walletone({
     login: '',
@@ -112,7 +112,7 @@ api.balanceInfo((err, data) => {
 # Пример получения лимитов
 
  ```javascript
-import walletone from 'walletone'
+import walletone from 'walletone.com@'
 
 const api = new walletone({
     login: '',
@@ -138,7 +138,7 @@ api.limitsInfo((err, data) => {
 
 
  ```javascript
-import walletone from 'walletone'
+import walletone from 'walletone.com@'
 
 const api = new walletone({
     login: '',
