@@ -48,7 +48,7 @@ var Wallet = function () {
                         "Params": [{ "FieldId": "Email", "Value": user }, { "FieldId": "account", "Value": "25" }, { "FieldId": "Amount", "Value": sum }]
                     }
                 };
-            } else if (type === 'wof') {
+            } else if (type === 'wow') {
                 return {
                     providerId: 'warg',
                     data: {

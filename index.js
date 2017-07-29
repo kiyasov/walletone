@@ -34,7 +34,7 @@ export default class Wallet {
                     ]
                 }
             };
-        } else if (type === 'wof') {
+        } else if (type === 'wow') {
             return {
                 providerId: 'warg',
                 data: {
