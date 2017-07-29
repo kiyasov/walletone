@@ -1,5 +1,5 @@
 {
-  "name": "walletone",
+  "name": "walletone.com",
   "version": "1.0.0",
   "description": "Оплата товаров через walletone.com",
   "main": "dist/index.js",
