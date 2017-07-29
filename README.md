@@ -5,24 +5,26 @@
 
 ## Нужно отключить SMS-подтверждение https://www.walletone.com/wallet/client/#/settings/security
 
-## Пример оплаты :
+## Пример оплаты:
 
+### Поставщики услуг:
+ 
+ #### Список игр:
 
+ * Steam === `steam`
+ * War Thunder === `wthu`
+ * World of Tanks/World of Warplanes => `wot`
+ * World of Warships === `wow`
+ * Танки Онлайн === `tankionline`
+ * Warface === `wafe`
+ * GameMiner === `gmmn`
+
+ #### Другое:
+
+ Вконтакте === `vkru`
+ 
 `type` - Поставщик услуг.
 
- ### Список игр:
-
- Steam => steam
- World of Tanks/World of Warplanes => `wot`
- World of Warships => `wow`
- Танки Онлайн => `tankionline`
- Warface => `warface`
-
- ### Другое:
-
- Вконтакте:
- 
- 
 `user` - Ник или E-mail пользователя. 
 Требуемые данные можно посмотреть [тут](https://www.walletone.com/wallet/client/#/payment).
 
@@ -31,7 +33,7 @@
 
 
  ```javascript
-import walletone from '../index'
+import walletone from 'walletone'
 
 const api = new walletone({
     login: '',
@@ -53,12 +55,110 @@ api.requestPayment({ type: 'tankionline', user: 'islam7407@gmail.com', sum: '10'
 const processComplete = (err, data) => {
 
     if (err) {
-        return console.error(err);
+        return console.error(err); // Вывод всех ошибок
     }
 
-    console.log(data);
+    console.log(data); // Вывод только при успешной оплате
 
 };
 ```
+
+
+## Пример получения профиля
+
+ ```javascript
+import walletone from 'walletone'
+
+const api = new walletone({
+    login: '',
+    password: ''
+});
+
+api.accountInfo((err, data) => {
+
+    if (err) {
+        return console.error(err); // Вывод всех ошибок
+    }
+
+      console.log(data); // Вывод только при успешном ответе
+
+});
+
+```
+
+## Пример получения баланса
+
+ ```javascript
+import walletone from 'walletone'
+
+const api = new walletone({
+    login: '',
+    password: ''
+});
+
+api.balanceInfo((err, data) => {
+
+    if (err) {
+        return console.error(err); // Вывод всех ошибок
+    }
+
+      console.log(data); // Вывод только при успешном ответе
+
+});
+
+```
+
+
+## Пример получения лимитов
+
+ ```javascript
+import walletone from 'walletone'
+
+const api = new walletone({
+    login: '',
+    password: ''
+});
+
+api.limitsInfo((err, data) => {
+
+    if (err) {
+        return console.error(err); // Вывод всех ошибок
+    }
+
+      console.log(data); // Вывод только при успешном ответе
+
+});
+
+```
+
+
+## Пример получения уведомлений
+
+По умолча́нию : `{ pageNumber: 1, itemsPerPage: 10 }`
+
+
+ ```javascript
+import walletone from 'walletone'
+
+const api = new walletone({
+    login: '',
+    password: ''
+});
+
+api.notificationsInfo(undefined, (err, data) => { 
+
+    if (err) {
+        return console.error(err); // Вывод всех ошибок
+    }
+
+      console.log(data); // Вывод только при успешном ответе
+
+});
+
+```
+
+
+
+
 
 
