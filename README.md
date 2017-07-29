@@ -5,22 +5,22 @@
 
 ## Нужно отключить SMS-подтверждение https://www.walletone.com/wallet/client/#/settings/security
 
-### Пример оплаты :
+## Пример оплаты :
 
 
 `type` - Поставщик услуг.
 
- ## Список игр:
+ ### Список игр:
 
- # Steam => steam
- # World of Tanks/World of Warplanes => `wot`
- # World of Warships => `wow`
- # Танки Онлайн => `tankionline`
- # Warface => `warface`
+ Steam => steam
+ World of Tanks/World of Warplanes => `wot`
+ World of Warships => `wow`
+ Танки Онлайн => `tankionline`
+ Warface => `warface`
 
- ## Другое:
+ ### Другое:
 
- # Вконтакте:
+ Вконтакте:
  
  
 `user` - Ник или E-mail пользователя. 
