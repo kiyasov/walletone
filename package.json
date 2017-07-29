@@ -2,21 +2,18 @@
   "name": "walletone",
   "version": "1.0.0",
   "description": "Оплата товаров через walletone.com",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": ".."
+    "url": "https://github.com/kiyasov/walletone"
   },
   "keywords": [
     "walletone.com",
     "оплата",
-    "walletone.com",
-    "walletone.com",
     "api",
-    "walletone.com",
     "clent"
   ],
   "author": "Islam Kiyasov",
