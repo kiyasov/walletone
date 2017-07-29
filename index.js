@@ -29,7 +29,7 @@ export default class Wallet {
                     "FormId": "Index",
                     "Params": [
                         { "FieldId": "Email", "Value": user },
-                        { "FieldId": "account", "Value": "25" },
+                        { "FieldId": "account", "Value": "26" },
                         { "FieldId": "Amount", "Value": sum }
                     ]
                 }
@@ -126,7 +126,9 @@ export default class Wallet {
                             return reject(err);
                         }
 
-                        console.log(body.State.StateId);
+                        if(body.State === undefined){
+                            return reject(body);
+                        }
 
                         switch (body.State.StateId) {
                             case 'CheckError' : {
@@ -164,10 +166,16 @@ export default class Wallet {
                     'Authorization': 'Bearer ' + data.Token
                 },
                 body: { 'FormId': '$Final' }
-            }, (err, data) => {
+            }, (err, request, body) => {
                 if (err) {
                     return callback(err);
                 }
+
+
+                if(data.Error !== undefined){
+                    return callback(body);
+                }
+
                 this.checkPayment(option.PaymentId).then(data => {
                     callback(null, data);
                 }, err => {
@@ -183,6 +191,7 @@ export default class Wallet {
             if (err) {
                 return callback(err);
             }
+
             request.put({
                 url: `https://www.walletone.com/OpenApi/payments/?providerId=${info.providerId}`,
                 headers: {
@@ -255,15 +264,20 @@ export default class Wallet {
                 callback(error);
                 return;
             }
+
+            if(body.Error !== undefined){
+                callback(body);
+            }
+
             switch (response.statusCode) {
                 case 400:
-                    callback(null, body, response);
+                    callback(body);
                     break;
                 case 401:
-                    callback(new Error('Token error'));
+                    callback(body);
                     break;
                 case 403:
-                    callback(new Error('Scope error'));
+                    callback(body);
                     break;
                 default:
                     callback(null, body, response);

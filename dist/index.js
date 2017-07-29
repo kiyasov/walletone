@@ -45,7 +45,7 @@ var Wallet = function () {
                     providerId: 'warg',
                     data: {
                         "FormId": "Index",
-                        "Params": [{ "FieldId": "Email", "Value": user }, { "FieldId": "account", "Value": "25" }, { "FieldId": "Amount", "Value": sum }]
+                        "Params": [{ "FieldId": "Email", "Value": user }, { "FieldId": "account", "Value": "26" }, { "FieldId": "Amount", "Value": sum }]
                     }
                 };
             } else if (type === 'wow') {
@@ -126,7 +126,9 @@ var Wallet = function () {
                                 return reject(err);
                             }
 
-                            console.log(body.State.StateId);
+                            if (body.State === undefined) {
+                                return reject(body);
+                            }
 
                             switch (body.State.StateId) {
                                 case 'CheckError':
@@ -168,10 +170,15 @@ var Wallet = function () {
                         'Authorization': 'Bearer ' + data.Token
                     },
                     body: { 'FormId': '$Final' }
-                }, function (err, data) {
+                }, function (err, request, body) {
                     if (err) {
                         return callback(err);
                     }
+
+                    if (data.Error !== undefined) {
+                        return callback(body);
+                    }
+
                     _this.checkPayment(option.PaymentId).then(function (data) {
                         callback(null, data);
                     }, function (err) {
@@ -190,6 +197,7 @@ var Wallet = function () {
                 if (err) {
                     return callback(err);
                 }
+
                 request.put({
                     url: 'https://www.walletone.com/OpenApi/payments/?providerId=' + info.providerId,
                     headers: {
@@ -278,15 +286,20 @@ var Wallet = function () {
                     callback(error);
                     return;
                 }
+
+                if (body.Error !== undefined) {
+                    callback(body);
+                }
+
                 switch (response.statusCode) {
                     case 400:
-                        callback(null, body, response);
+                        callback(body);
                         break;
                     case 401:
-                        callback(new Error('Token error'));
+                        callback(body);
                         break;
                     case 403:
-                        callback(new Error('Scope error'));
+                        callback(body);
                         break;
                     default:
                         callback(null, body, response);

@@ -11,11 +11,13 @@ var api = new _index2.default({
     password: ''
 });
 
-api.requestPayment({ type: 'tankionline', user: 'islam7407@gmail.com', sum: '10' }, function (err, data) {
+api.requestPayment({ type: 'wot', user: 'islam7407@gmail.com', sum: '10' }, function (err, data) {
 
     if (err) {
         return console.error(err);
     }
+
+    console.log(data.PaymentId);
 
     api.processPayment({
         "PaymentId": data.PaymentId
@@ -25,8 +27,8 @@ api.requestPayment({ type: 'tankionline', user: 'islam7407@gmail.com', sum: '10'
 var processComplete = function processComplete(err, data) {
 
     if (err) {
-        return console.error(err);
+        return console.error(err); // Вывод всех ошибок
     }
 
-    console.log(data);
+    console.log(data); // Вывод только при успешной оплате
 };
