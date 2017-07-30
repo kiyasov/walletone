@@ -1,6 +1,6 @@
 {
   "name": "walletone.com",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Оплата товаров через walletone.com",
   "main": "dist/index.js",
   "scripts": {

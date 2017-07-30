@@ -126,7 +126,7 @@ export default class Wallet {
                             return reject(err);
                         }
 
-                        if(body.State === undefined){
+                        if (body.State === undefined) {
                             return reject(body);
                         }
 
@@ -171,8 +171,7 @@ export default class Wallet {
                     return callback(err);
                 }
 
-
-                if(data.Error !== undefined){
+                if (body.Error !== undefined) {
                     return callback(body);
                 }
 
@@ -261,12 +260,13 @@ export default class Wallet {
     processResponse(callback) {
         return function httpCallback(error, response, body) {
             if (error) {
-                callback(error);
-                return;
+                return callback(error);
+
             }
 
-            if(body.Error !== undefined){
-                callback(body);
+            if (body.Error !== undefined) {
+                return callback(body);
+
             }
 
             switch (response.statusCode) {

@@ -175,7 +175,7 @@ var Wallet = function () {
                         return callback(err);
                     }
 
-                    if (data.Error !== undefined) {
+                    if (body.Error !== undefined) {
                         return callback(body);
                     }
 
@@ -283,12 +283,11 @@ var Wallet = function () {
         value: function processResponse(callback) {
             return function httpCallback(error, response, body) {
                 if (error) {
-                    callback(error);
-                    return;
+                    return callback(error);
                 }
 
                 if (body.Error !== undefined) {
-                    callback(body);
+                    return callback(body);
                 }
 
                 switch (response.statusCode) {

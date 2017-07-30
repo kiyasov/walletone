@@ -5,18 +5,28 @@ const api = new walletone({
     password: ''
 });
 
-api.requestPayment({ type: 'wot', user: 'islam7407@gmail.com', sum: '10' }, (err, data) => {
-
+api.balanceInfo((err, data) => {
     if (err) {
-        return console.error(err);
+        console.error(`Баланс ${err}`);
+    } else {
+
+        console.log(data);
+
+        api.requestPayment({ type: 'wot', user: 'islam7407@gmail.com', sum: '10' }, (err, data) => {
+
+            if (err) {
+                return console.error(err);
+            }
+
+            console.log(data.PaymentId);
+
+            api.processPayment({
+                "PaymentId": data.PaymentId
+            }, processComplete);
+
+        });
+
     }
-
-
-    console.log(data.PaymentId);
-
-    api.processPayment({
-        "PaymentId": data.PaymentId
-    }, processComplete);
 
 });
 
@@ -29,3 +39,4 @@ const processComplete = (err, data) => {
     console.log(data); // Вывод только при успешной оплате
 
 };
+
