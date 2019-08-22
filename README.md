@@ -15,7 +15,8 @@
  * War Thunder === `wthu`
  * World of Tanks/World of Warplanes === `wot`
  * World of Warships === `wow`
- * Танки Онлайн === `tankionline`
+ * Танки Онлайн оплата в рублях === `tankionline`
+ * Танки Онлайн оплата в тенге === `tankionline_kz`
  * Warface === `wafe`
  * GameMiner === `gmmn`
 

@@ -57,6 +57,17 @@ export default class Wallet {
                     ]
                 }
             };
+        } else if (type === 'tankionline_kz') {
+            return {
+                providerId: 'k031',
+                data: {
+                    "FormId": "Index",
+                    "Params": [
+                        { "FieldId": "account", "Value": user },
+                        { "FieldId": "Amount", "Value": sum }
+                    ]
+                }
+            };
         } else if (type === 'wafe' || type === 'wthu') {
             return {
                 providerId: type,
@@ -236,6 +247,20 @@ export default class Wallet {
             }
             request({
                 url: `https://www.walletone.com/OpenApi/limits`,
+                headers: {
+                    'Authorization': 'Bearer ' + data.Token
+                }
+            }, this.processResponse(callback));
+        });
+    }
+
+    providersInfo(page, itemsPerPage, searchString, callback) {
+        this.getToken((err, data) => {
+            if (err) {
+                return callback(err);
+            }
+            request({
+                url: `https://api.w1.ru/OpenApi/providers?page=${page}&itemsPerPage=${itemsPerPage}&searchString=${searchString}`,
                 headers: {
                     'Authorization': 'Bearer ' + data.Token
                 }

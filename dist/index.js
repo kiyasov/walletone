@@ -64,6 +64,14 @@ var Wallet = function () {
                         "Params": [{ "FieldId": "v1", "Value": user }, { "FieldId": "Amount", "Value": sum }]
                     }
                 };
+            } else if (type === 'tankionline_kz') {
+                return {
+                    providerId: 'k031',
+                    data: {
+                        "FormId": "Index",
+                        "Params": [{ "FieldId": "account", "Value": user }, { "FieldId": "Amount", "Value": sum }]
+                    }
+                };
             } else if (type === 'wafe' || type === 'wthu') {
                 return {
                     providerId: type,
@@ -262,9 +270,26 @@ var Wallet = function () {
             });
         }
     }, {
+        key: 'providersInfo',
+        value: function providersInfo(page, itemsPerPage, searchString, callback) {
+            var _this6 = this;
+
+            this.getToken(function (err, data) {
+                if (err) {
+                    return callback(err);
+                }
+                request({
+                    url: 'https://api.w1.ru/OpenApi/providers?page=' + page + '&itemsPerPage=' + itemsPerPage + '&searchString=' + searchString,
+                    headers: {
+                        'Authorization': 'Bearer ' + data.Token
+                    }
+                }, _this6.processResponse(callback));
+            });
+        }
+    }, {
         key: 'accountInfo',
         value: function accountInfo(callback) {
-            var _this6 = this;
+            var _this7 = this;
 
             this.getToken(function (err, data) {
                 if (err) {
@@ -275,7 +300,7 @@ var Wallet = function () {
                     headers: {
                         'Authorization': 'Bearer ' + data.Token
                     }
-                }, _this6.processResponse(callback));
+                }, _this7.processResponse(callback));
             });
         }
     }, {
